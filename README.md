@@ -32,13 +32,17 @@ Row didalamnya ada inputan dan FutureBuilder yang akan menampilkan list transaks
 ## Screenshot
 Lampirkan minimal 2 screenshot hasil implementasi fitur.
 <img width="436" height="890" alt="image" src="https://github.com/user-attachments/assets/895e4526-b075-413b-86c9-22fe948cec18" />
+<img width="1474" height="894" alt="image" src="https://github.com/user-attachments/assets/9ce806ed-0d15-4147-8031-b4b58dd7f4be" />
 
+NB: saat saya pindah projeknya itu jadi error tidak keluar floating button yang sudah dibuat untuk filter
 ## Catatan Tambahan
 Awalnya saya bingung dengan soalnya untuk membuat report, namun saya tanya pak sepyan dan diarahkan untuk
 mengubah halaman history dengan menambahkan filter.
+
 Kemudian saya melihat tutorial berikut : 
  - https://stackoverflow.com/questions/2309227/sqlite-select-with-condition-on-date
  - https://docs.flutter.dev/cookbook/forms/text-input
  - https://medium.com/@wartelski/flutter-3-floating-action-buttons-949be319df82
+
 Lalu saya bingung saat menjalankan di HP teman tapi  error dengan versi gradle, namun saya mendapat tutorial dari
 teman saya yang menggunakan CHATGPT untuk mengfiks kan error yang sama namun tapi tetap error.
