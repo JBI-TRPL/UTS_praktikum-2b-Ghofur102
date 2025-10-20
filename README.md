@@ -33,9 +33,126 @@ Row didalamnya ada inputan dan FutureBuilder yang akan menampilkan list transaks
 Lampirkan minimal 2 screenshot hasil implementasi fitur.
 
 <img width="436" height="890" alt="image" src="https://github.com/user-attachments/assets/895e4526-b075-413b-86c9-22fe948cec18" />
-<img width="471" height="898" alt="image" src="https://github.com/user-attachments/assets/a8a8fb3e-8f74-4bdb-ae09-638f59ba1f7f" />
+<img width="474" height="894" alt="image" src="https://github.com/user-attachments/assets/77514e33-20c7-4c5a-8a33-d346a8a1a16f" />
 
-NB: saat saya pindah projeknya itu jadi error tidak keluar floating button yang sudah dibuat untuk filter
+NB: saat saya pindah projeknya itu jadi error tidak keluar floating button yang sudah dibuat untuk filter terus saya tanya ke AI 
+dengan prompt `error "Another exception was thrown: RenderBox was not laid out: RenderAnimatedOpacity#75831 NEEDS-LAYOUT NEEDS-PAINT" di code "import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+import 'package:pos_app/database/database_helper.dart';
+import 'package:pos_app/models/transaction_model.dart';
+
+class TransactionHistoryScreen extends StatefulWidget {
+  const TransactionHistoryScreen({super.key});
+
+  @override
+  State<TransactionHistoryScreen> createState() =>
+      _TransactionHistoryScreenState();
+}
+
+class _TransactionHistoryScreenState extends State<TransactionHistoryScreen> {
+  late Future<List<Transaction>> _transactionsFuture;
+
+  @override
+  void initState() {
+    super.initState();
+    _transactionsFuture = DatabaseHelper.instance.getTransactions();
+  }
+
+  void _showTransactionDetails(Transaction transaction) async {
+    final details =
+        await DatabaseHelper.instance.getTransactionDetails(transaction.id!);
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: Text('Detail Transaksi #${transaction.id}'),
+        content: SizedBox(
+          width: double.maxFinite,
+          child: ListView.builder(
+            shrinkWrap: true,
+            itemCount: details.length,
+            itemBuilder: (context, index) {
+              final detail = details[index];
+              return ListTile(
+                title: Text(detail.productName),
+                subtitle: Text(
+                    '${detail.quantity} x Rp. ${detail.priceAtTransaction}'),
+                trailing:
+                    Text('Rp. ${detail.quantity * detail.priceAtTransaction}'),
+              );
+            },
+          ),
+        ),
+        actions: [
+          TextButton(
+              onPressed: () => Navigator.pop(context),
+              child: const Text('Tutup')),
+        ],
+      ),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final inputTotalAmountController = TextEditingController();
+
+    return Scaffold(
+      appBar: AppBar(title: const Text('Riwayat Transaksi')),
+      body: Row(
+        children: [
+          TextField(
+            controller: inputTotalAmountController,
+            decoration: const InputDecoration(
+              hintText: "Masukkan harga transaksi",
+            ),
+          ),
+          FutureBuilder<List<Transaction>>(
+            future: _transactionsFuture,
+            builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return const Center(child: CircularProgressIndicator());
+              }
+              if (!snapshot.hasData || snapshot.data!.isEmpty) {
+                return const Center(
+                    child: Text('Tidak ada riwayat transaksi.'));
+              }
+              final transactions = snapshot.data!;
+              return ListView.builder(
+                itemCount: transactions.length,
+                itemBuilder: (context, index) {
+                  final transaction = transactions[index];
+                  return Card(
+                    margin:
+                        const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                    child: ListTile(
+                      title: Text('Transaksi #${transaction.id}'),
+                      subtitle: Text(DateFormat('dd MMMM yyyy, HH:mm')
+                          .format(transaction.transactionDate)),
+                      trailing: Text('Rp. ${transaction.totalAmount}',
+                          style: const TextStyle(fontWeight: FontWeight.bold)),
+                      onTap: () => _showTransactionDetails(transaction),
+                    ),
+                  );
+                },
+              );
+            },
+          ),
+        ],
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButton: FloatingActionButton.extended(
+          onPressed: () {
+            final totalAmount = inputTotalAmountController.text;
+            final amount = int.parse(totalAmount);
+            _transactionsFuture =
+                DatabaseHelper.instance.getTransactionsByTotalAmount(amount);
+          },
+          label: const Icon(Icons.filter_alt)),
+    );
+  }
+}
+"` katanya sih mengganti Row menjadi Column dengan karena Row akan memberikan ukuran tak terbatas
+sedangkan TextField dan FutureBuilder memakan ruang sebebasnya karena di bungkus didalam Row sehingga
+menghasilkan error. 
 ## Catatan Tambahan
 Awalnya saya bingung dengan soalnya untuk membuat report, namun saya tanya pak sepyan dan diarahkan untuk
 mengubah halaman history dengan menambahkan filter.
