@@ -31,6 +31,7 @@ Row didalamnya ada inputan dan FutureBuilder yang akan menampilkan list transaks
    
 ## Screenshot
 Lampirkan minimal 2 screenshot hasil implementasi fitur.
+
 <img width="436" height="890" alt="image" src="https://github.com/user-attachments/assets/895e4526-b075-413b-86c9-22fe948cec18" />
 <img width="1474" height="894" alt="image" src="https://github.com/user-attachments/assets/9ce806ed-0d15-4147-8031-b4b58dd7f4be" />
 
