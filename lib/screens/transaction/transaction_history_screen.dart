@@ -59,7 +59,7 @@ class _TransactionHistoryScreenState extends State<TransactionHistoryScreen> {
 
     return Scaffold(
       appBar: AppBar(title: const Text('Riwayat Transaksi')),
-      body: Row(
+      body: Column(
         children: [
           TextField(
             controller: inputTotalAmountController,
