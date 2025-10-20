@@ -2,15 +2,19 @@
 
 # Ujian Praktikum Flutter POS SQLite
 **Nama Mahasiswa:** Muhamad Abdul Ghofur
+
 **NIM:** 362458302016
+
 **Kelompok:** 1
+
 ## Deskripsi Fitur yang Ditambahkan
 * Ubah navigasi utama menjadi BottomNavigationBar dengan 3 tab: Menu, Transaction, Report.
+* 
 ## File yang Dimodifikasi
 Tuliskan nama file dan deskripsi singkat:
-- lib/screens/home/home_screen.dart -> saya ubah bagian NavigationBar itu diganti nama 3 menunya menjadi :
+* lib/screens/home/home_screen.dart -> saya ubah bagian NavigationBar itu diganti nama 3 menunya menjadi :
 Menu, Transaction, Report. Lalu diubah List pages supaya tap Report itu mengarah ke halaman history
-- lib/database/database_helper.dart -> menambahkan fungsi getTransactionsByTotalAmount(int totalAmount), 
+* lib/database/database_helper.dart -> menambahkan fungsi getTransactionsByTotalAmount(int totalAmount), 
 sebenarnya saya copas dari fungsi getTransactions() cuman saya ubah kode query db.query menjadi
 'select * from transactions where totalAmount > $totalAmount' supaya menampilkan transaksi dimana harga
 totalnya lebih besar dari inputan harga total.
@@ -19,12 +23,16 @@ mana isinya inputan untuk menginput input filter total harga, saya referensikan 
 product_management_screen.dart untuk mengatur bagaimana inputan dan bagaimana ketika di klik floating
 button itu memanggil fungsi getTransactionsByTotalAmount(int totalAmount). Lalu kan saya ubah jadi menggunakan 
 Row didalamnya ada inputan dan FutureBuilder yang akan menampilkan list transaksi
+
 ## Cara Menjalankan Aplikasi
 1. Jalankan ‘flutter pub get‘
 2. Jalankan ‘flutter run‘
 3. Uji fitur yang telah Anda tambahkan
+   
 ## Screenshot
 Lampirkan minimal 2 screenshot hasil implementasi fitur.
+<img width="436" height="890" alt="image" src="https://github.com/user-attachments/assets/895e4526-b075-413b-86c9-22fe948cec18" />
+
 ## Catatan Tambahan
 Awalnya saya bingung dengan soalnya untuk membuat report, namun saya tanya pak sepyan dan diarahkan untuk
 mengubah halaman history dengan menambahkan filter.
