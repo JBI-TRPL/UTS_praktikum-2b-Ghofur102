@@ -46,4 +46,4 @@ Kemudian saya melihat tutorial berikut :
  - https://medium.com/@wartelski/flutter-3-floating-action-buttons-949be319df82
 
 Lalu saya bingung saat menjalankan di HP teman tapi  error dengan versi gradle, namun saya mendapat tutorial dari
-teman saya yang menggunakan CHATGPT untuk mengfiks kan error yang sama namun tapi tetap error.
+teman saya yang menggunakan CHATGPT untuk mengfiks kan error yang sama namun tapi tetap error. Pada akhirnya ga jadi sih.
